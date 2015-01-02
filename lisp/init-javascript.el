@@ -1,6 +1,5 @@
 (require-package 'json-mode)
 (maybe-require-package 'js2-mode)
-(maybe-require-package 'ac-js2)
 (maybe-require-package 'coffee-mode)
 (require-package 'js-comint)
 
@@ -56,6 +55,13 @@
 (dolist (hook '(js2-mode-hook js-mode-hook json-mode-hook))
   (add-hook hook 'rainbow-delimiters-mode))
 
+
+;; js2-refactor
+(maybe-require-package 'buster-mode)
+(maybe-require-package 'buster-snippets)
+(maybe-require-package 'ac-js2)
+(maybe-require-package 'js2-refactor)
+(js2r-add-keybindings-with-prefix "C-c C-m")
 
 
 ;;; Coffeescript
