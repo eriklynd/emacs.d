@@ -17,6 +17,7 @@
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 (yas/initialize)
 (yas/load-directory (expand-file-name "snippets" user-emacs-directory))
+(setq yas-prompt-functions '(yas-dropdown-prompt yas-completing-prompt))
 
 ;;----------------------------------------------------------------------------
 ;; Use Emacs' built-in TAB completion hooks to trigger AC (Emacs >= 23.2)
