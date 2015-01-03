@@ -6,6 +6,19 @@
 (setq-default ac-dwim nil) ; To get pop-ups with docs even if a word is uniquely completed
 
 ;;----------------------------------------------------------------------------
+;;Integrate Yasnippet
+;;----------------------------------------------------------------------------
+(require-package 'yasnippet)
+(require 'yasnippet)
+;; Initialize Yasnippet
+;;Don't map TAB to yasnippet
+;;we'll only ever trigger it indirectly.
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(yas/initialize)
+(yas/load-directory (expand-file-name "snippets" user-emacs-directory))
+
+;;----------------------------------------------------------------------------
 ;; Use Emacs' built-in TAB completion hooks to trigger AC (Emacs >= 23.2)
 ;;----------------------------------------------------------------------------
 (setq tab-always-indent 'complete)  ;; use 't when auto-complete is disabled
@@ -38,6 +51,7 @@
 
 (set-default 'ac-sources
              '(ac-source-imenu
+               ac-source-yasnippet
                ac-source-dictionary
                ac-source-words-in-buffer
                ac-source-words-in-same-mode-buffers
